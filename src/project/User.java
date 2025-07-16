@@ -8,7 +8,7 @@ public class User {
     private String password;
     private String email;
     private ArrayList<HashMap<String, Integer>> knownSkills;
-    private ArrayList<HashMap<String, Integer>> desiredSkills;
+    private ArrayList<String> desiredSkills;
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -24,14 +24,17 @@ public class User {
 
     public String getEmail() { return this.email;}
 
-    // Setter for known skills
     public void setKnownSkills(HashMap<String, Integer> knownSkills) {
         this.knownSkills.add(knownSkills);
     }
 
-    // Setter for desired skills
+    public void setDesiredSkills(String desiredSkill) {
+        this.desiredSkills.add(desiredSkill);
+    }
 
     public ArrayList<HashMap<String, Integer>> getKnownSkills() { return this.knownSkills;}
 
-    public ArrayList<HashMap<String, Integer>> getDesiredSkills() { return this.desiredSkills;}
+    public ArrayList<String> getDesiredSkills() {
+        return desiredSkills;
+    }
 }
