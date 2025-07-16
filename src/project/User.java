@@ -25,6 +25,9 @@ public class User {
     public String getEmail() { return this.email;}
 
     // Setter for known skills
+    public void setKnownSkills(HashMap<String, Integer> knownSkills) {
+        this.knownSkills.add(knownSkills);
+    }
 
     // Setter for desired skills
 
