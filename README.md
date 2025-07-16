@@ -17,4 +17,4 @@ skills they wish to learn.
 - I will also be using TDD (Test Driven Development) on this application, using JUNIT.
 
 ```Installation Steps```
-
+- You will find JUNIT installed under the "lib" directory of the project.
