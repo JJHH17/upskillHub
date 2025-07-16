@@ -19,4 +19,16 @@ public class User {
     }
 
     public String getUsername() { return this.username;}
+
+    public String getPassword() { return this.password;}
+
+    public String getEmail() { return this.email;}
+
+    // Setter for known skills
+
+    // Setter for desired skills
+
+    public ArrayList<HashMap<String, Integer>> getKnownSkills() { return this.knownSkills;}
+
+    public ArrayList<HashMap<String, Integer>> getDesiredSkills() { return this.desiredSkills;}
 }
