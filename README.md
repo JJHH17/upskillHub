@@ -14,6 +14,7 @@ We will finally recommend PluralSight courses to the users, based on their desir
 - Use JavaFX to build a desktop app based front end to the application.
 - Use an external API (such as with PluralSight) to fetch recommended courses to users, based on what 
 skills they wish to learn.
+- I will also be using TDD (Test Driven Development) on this application, using JUNIT.
 
 ```Installation Steps```
 
