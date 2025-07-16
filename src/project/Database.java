@@ -17,7 +17,7 @@ public class Database {
         try (InputStream input = new FileInputStream("db.properties")) {
             prop.load(input);
         } catch (Exception e) {
-            System.out.println("There was a problem authenticating");
+            System.out.println("There was a problem fetching credentials from the db.properties file");
             e.printStackTrace();
         }
 
@@ -25,4 +25,6 @@ public class Database {
         this.dbUsername = prop.getProperty("dbUsername");
         this.dbPassword = prop.getProperty("dbPassword");
     }
+
+
 }
