@@ -24,4 +24,8 @@ public class UserTest {
     void testPassword() {
         assertEquals("testPassword", user.getPassword());
     }
+
+    @Test
+    void testEmail() { assertEquals("test@test.com", user.getEmail());
+    }
 }
