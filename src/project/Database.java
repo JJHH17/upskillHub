@@ -46,4 +46,22 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+    public void addUser(User user) {
+        String sql = "INSERT INTO users (Username, Password, Email) VALUES (?, ?, ?);";
+
+        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+             PreparedStatement prepared = con.prepareStatement(sql)) {
+
+            prepared.setString(1, user.getEmail());
+            prepared.setString(2, user.getPassword());
+            prepared.setString(3, user.getEmail());
+            prepared.execute();
+            System.out.println("User added successfully");
+
+        } catch (SQLException e) {
+            System.out.println("There was an error when adding this user");
+            e.printStackTrace();
+        }
+    }
 }
