@@ -54,7 +54,7 @@ public class Database {
         try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
              PreparedStatement prepared = con.prepareStatement(sql)) {
 
-            prepared.setString(1, user.getEmail());
+            prepared.setString(1, user.getUsername());
             prepared.setString(2, user.getPassword());
             prepared.setString(3, user.getEmail());
             prepared.execute();
@@ -67,7 +67,22 @@ public class Database {
     }
 
     public void createDesiredSkillsTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS desiredSkills (" +
+                "ID SERIAL PRIMARY KEY, " +
+                "skillName varchar(50) NOT NULL);";
 
+        // Establishing a connection with database // TODO - REMOVE THIS AND REDUCE REUSED CODE
+        try {
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+            System.out.println("Table created successfully");
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("There was a problem creating the database table");
+            e.printStackTrace();
+        }
     }
 
     public void createKnownSkillsTable() {
