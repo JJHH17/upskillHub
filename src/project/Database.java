@@ -68,7 +68,7 @@ public class Database {
 
     public void createDesiredSkillsTable() {
         String sql = "CREATE TABLE IF NOT EXISTS desiredSkills (" +
-                "ID SERIAL PRIMARY KEY, " +
+                "desired_ID SERIAL PRIMARY KEY, " +
                 "skillName varchar(50) NOT NULL);";
 
         // Establishing a connection with database // TODO - REMOVE THIS AND REDUCE REUSED CODE
@@ -87,7 +87,7 @@ public class Database {
 
     public void createKnownSkillsTable() {
         String sql = "CREATE TABLE IF NOT EXISTS knownSkills ("
-                + "ID SERIAL PRIMARY KEY, "
+                + "known_id SERIAL PRIMARY KEY, "
                 + "skillName varchar(50) NOT NULL);";
 
         // Establishing a connection with database // TODO - REMOVE THIS AND REDUCE REUSED CODE
@@ -104,7 +104,25 @@ public class Database {
         }
     }
 
-    public void addSkill(String username, HashMap<String, Integer> skill) {
+    public void userSkillsMapped() {
+        String sql = "CREATE TABLE IF NOT EXISTS userSkillsMapped ("
+                + "Username varchar(50) NOT NULL, "
+                + "known_id INTEGER NOT NULL, "
+                + "FOREIGN KEY (Username) REFERENCES users(Username), "
+                + "FOREIGN KEY (known_id) REFERENCES knownSkills(known_id), "
+                + " PRIMARY KEY (Username, known_id));";
 
+        // Establishing a connection with database // TODO - REMOVE THIS AND REDUCE REUSED CODE
+        try {
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+            System.out.println("Table created successfully");
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("There was a problem creating the database table");
+            e.printStackTrace();
+        }
     }
 }
