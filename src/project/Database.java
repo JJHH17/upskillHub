@@ -11,7 +11,7 @@ public class Database {
     private String dbUsername;
     private String dbPassword;
 
-    public void credentialFetch() {
+    public Database() {
         // Pulls from credential file
         Properties prop = new Properties();
 
@@ -22,9 +22,9 @@ public class Database {
             e.printStackTrace();
         }
 
-        this.dbURL = prop.getProperty("dbURL");
-        this.dbUsername = prop.getProperty("dbUsername");
-        this.dbPassword = prop.getProperty("dbPassword");
+        this.dbURL = prop.getProperty("db.url");
+        this.dbUsername = prop.getProperty("db.username");
+        this.dbPassword = prop.getProperty("db.password");
     }
 
     public void createTable() {
