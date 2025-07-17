@@ -1,13 +1,12 @@
 package project;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class User {
     private String username;
     private String password;
     private String email;
-    private ArrayList<HashMap<String, Integer>> knownSkills;
+    private ArrayList<String> knownSkills;
     private ArrayList<String> desiredSkills;
 
     public User(String username, String password, String email) {
@@ -24,15 +23,16 @@ public class User {
 
     public String getEmail() { return this.email;}
 
-    public void setKnownSkills(HashMap<String, Integer> knownSkills) {
-        this.knownSkills.add(knownSkills);
+    public void setKnownSkills(String knownSkill) {
+        this.knownSkills.add(knownSkill);
     }
 
     public void setDesiredSkills(String desiredSkill) {
         this.desiredSkills.add(desiredSkill);
     }
 
-    public ArrayList<HashMap<String, Integer>> getKnownSkills() { return this.knownSkills;}
+    public ArrayList<String> getKnownSkills() {
+        return knownSkills;}
 
     public ArrayList<String> getDesiredSkills() {
         return desiredSkills;
