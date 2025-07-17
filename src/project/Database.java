@@ -3,6 +3,7 @@ package project;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class Database {
@@ -63,5 +64,17 @@ public class Database {
             System.out.println("There was an error when adding this user");
             e.printStackTrace();
         }
+    }
+
+    public void createDesiredSkillsTable() {
+
+    }
+
+    public void createKnownSkillsTable() {
+
+    }
+
+    public void addSkill(String username, HashMap<String, Integer> skill) {
+
     }
 }
