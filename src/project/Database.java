@@ -86,7 +86,22 @@ public class Database {
     }
 
     public void createKnownSkillsTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS knownSkills ("
+                + "ID SERIAL PRIMARY KEY, "
+                + "skillName varchar(50) NOT NULL);";
 
+        // Establishing a connection with database // TODO - REMOVE THIS AND REDUCE REUSED CODE
+        try {
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+            System.out.println("Table created successfully");
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("There was a problem creating the database table");
+            e.printStackTrace();
+        }
     }
 
     public void addSkill(String username, HashMap<String, Integer> skill) {
