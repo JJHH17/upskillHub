@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import project.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,15 +18,12 @@ public class UserTest {
         user = new User("testUser", "testPassword", "test@test.com");
 
         // Setting known skills
-        HashMap<String, Integer> skill1 = new HashMap<>();
-        skill1.put("Java", 5);
-        HashMap<String, Integer> skill2 = new HashMap<>();
-        skill2.put("C++", 3);
-        HashMap<String, Integer> skill3 = new HashMap<>();
-        skill3.put("Python", 2);
-        user.setKnownSkills(skill1);
-        user.setKnownSkills(skill2);
-        user.setKnownSkills(skill3);
+        String knownSkill1 = "music";
+        String knownSkill2 = "programming";
+        String knownSkill3 = "farming";
+        user.setKnownSkills(knownSkill1);
+        user.setKnownSkills(knownSkill2);
+        user.setKnownSkills(knownSkill3);
 
         // Setting desired skills
         String desiredSkill1 = "guitar";
@@ -58,9 +55,9 @@ public class UserTest {
 
     @Test
     void testKnownSkillsValues() {
-        assertEquals(5, user.getKnownSkills().get(0).get("Java"));
-        assertEquals(3, user.getKnownSkills().get(1).get("C++"));
-        assertEquals(2, user.getKnownSkills().get(2).get("Python"));
+        assertEquals("music", user.getKnownSkills().get(0));
+        assertEquals("programming", user.getKnownSkills().get(1));
+        assertEquals("farming", user.getKnownSkills().get(2));
     }
 
     @Test
