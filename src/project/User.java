@@ -1,20 +1,16 @@
 package project;
 
-import java.util.ArrayList;
-
 public class User {
     private String username;
     private String password;
     private String email;
-    private ArrayList<String> knownSkills;
-    private ArrayList<String> desiredSkills;
+    private String knownSkill;
+    private String desiredSkill;
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.knownSkills = new ArrayList<>();
-        this.desiredSkills = new ArrayList<>();
     }
 
     public String getUsername() { return this.username;}
@@ -24,17 +20,18 @@ public class User {
     public String getEmail() { return this.email;}
 
     public void setKnownSkills(String knownSkill) {
-        this.knownSkills.add(knownSkill);
+        knownSkill = knownSkill;
     }
 
     public void setDesiredSkills(String desiredSkill) {
-        this.desiredSkills.add(desiredSkill);
+        desiredSkill = desiredSkill;
     }
 
-    public ArrayList<String> getKnownSkills() {
-        return knownSkills;}
+    public String getKnownSkill() {
+        return knownSkill;
+    }
 
-    public ArrayList<String> getDesiredSkills() {
-        return desiredSkills;
+    public String getDesiredSkill() {
+        return desiredSkill;
     }
 }
