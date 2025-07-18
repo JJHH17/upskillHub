@@ -45,19 +45,29 @@ public class Database {
 
     public void createTable() {
         String sql = "CREATE TABLE IF NOT EXISTS users (" +
-                "Username varchar(50) PRIMARY KEY, " +
+                "User_ID SERIAL PRIMARY KEY, " +
+                "Username varchar(50) NOT NULL UNIQUE, " +
                 "Password varchar(15) NOT NULL, " +
                 "Email varchar(50) NOT NULL);";
 
         tableCreation(sql);
     }
 
-    public void createKnownSkillsTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS known_skills (" +
+    public void createSkillsTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS skills (" +
                 "Skill_ID SERIAL PRIMARY KEY, " +
                 "Skill_Name varchar(50) NOT NULL UNIQUE);";
 
         tableCreation(sql);
+    }
+
+    public void createUserSkillsTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS user_skills (" +
+                "User_ID INT, " +
+                "Skill_ID INT, " +
+                "PRIMARY KEY (User_ID, Skill_ID)," +
+                "FOREIGN KEY (User_ID) REFERENCES users(User_ID)," +
+                "FOREIGN KEY (Skill_ID) REFERENCES skills(Skill_ID));";
     }
 
     public void addUser(User user) {
