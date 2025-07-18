@@ -32,7 +32,9 @@ public class Database {
         String sql = "CREATE TABLE IF NOT EXISTS users (" +
                 "Username varchar(50) PRIMARY KEY, " +
                 "Password varchar(15) NOT NULL, " +
-                "Email varchar(50) NOT NULL);";
+                "Email varchar(50) NOT NULL" +
+                "knownSkill varchar(50)" +
+                "desiredSkill varchar(50);";
 
         // Establishing a connection with database
         try {
