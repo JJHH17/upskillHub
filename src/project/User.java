@@ -4,7 +4,6 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String knownSkill;
     private String desiredSkill;
 
     public User(String username, String password, String email) {
@@ -19,16 +18,8 @@ public class User {
 
     public String getEmail() { return this.email;}
 
-    public void setKnownSkill(String knownSkill) {
-        this.knownSkill = knownSkill;
-    }
-
     public void setDesiredSkill(String desiredSkill) {
         this.desiredSkill = desiredSkill;
-    }
-
-    public String getKnownSkill() {
-        return knownSkill;
     }
 
     public String getDesiredSkill() {
