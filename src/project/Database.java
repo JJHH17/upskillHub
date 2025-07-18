@@ -136,4 +136,23 @@ public class Database {
             e.printStackTrace();
         }
     }
+    public void mapDesiredSkillToUser(String username, String skillName) {
+        String sql = "INSERT INTO desired_skills (User_ID, Skill_ID) " +
+                "SELECT u.User_ID, s.Skill_ID " +
+                "FROM users u, skills s " +
+                "WHERE u.Username = ? AND s.Skill_Name = ?;";
+
+        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+             PreparedStatement prepared = con.prepareStatement(sql)) {
+
+            prepared.setString(1, username);
+            prepared.setString(2, skillName);
+            prepared.execute();
+            System.out.println("Skill mapped successfully");
+
+        } catch (SQLException e) {
+            System.out.println("There was an error when mapping this skill to the user");
+            e.printStackTrace();
+        }
+    }
 }
