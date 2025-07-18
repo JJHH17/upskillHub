@@ -68,6 +68,19 @@ public class Database {
                 "PRIMARY KEY (User_ID, Skill_ID)," +
                 "FOREIGN KEY (User_ID) REFERENCES users(User_ID)," +
                 "FOREIGN KEY (Skill_ID) REFERENCES skills(Skill_ID));";
+
+        tableCreation(sql);
+    }
+
+    public void createDesiredSkillsTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS desired_skills (" +
+                "User_ID INT, " +
+                "Skills_ID INT, " +
+                "PRIMARY KEY (User_ID, Skill_ID), " +
+                "FOREIGN KEY (User_ID) REFERENCES users(User_ID), " +
+                "FOREIGN KEY (Skills_ID) REFERENCES skills(Skill_ID));";
+
+        tableCreation(sql);
     }
 
     public void addUser(User user) {
