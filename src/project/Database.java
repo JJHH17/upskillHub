@@ -3,7 +3,6 @@ package project;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Properties;
 
 public class Database {
@@ -54,4 +53,22 @@ public class Database {
         tableCreation(sql);
     }
 
+    public void addUser(User user) {
+        String sql = "INSERT INTO users (Username, Password, Email, Desired_Skill) VALUES (?, ?, ?, ?)";
+
+        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+             PreparedStatement prepared = con.prepareStatement(sql)) {
+
+            prepared.setString(1, user.getUsername());
+            prepared.setString(2, user.getPassword());
+            prepared.setString(3, user.getEmail());
+            prepared.setString(4, user.getDesiredSkill());
+            prepared.execute();
+            System.out.println("User added successfully");
+
+        } catch (SQLException e) {
+            System.out.println("There was an error when adding this user to the database");
+            e.printStackTrace();
+        }
+    }
 }
