@@ -52,6 +52,14 @@ public class Database {
         tableCreation(sql);
     }
 
+    public void createKnownSkillsTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS known_skills (" +
+                "Skill_ID SERIAL PRIMARY KEY, " +
+                "Skill_Name varchar(50) NOT NULL UNIQUE);";
+
+        tableCreation(sql);
+    }
+
     public void addUser(User user) {
         String sql = "INSERT INTO users (Username, Password, Email) VALUES (?, ?, ?);";
 
