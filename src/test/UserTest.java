@@ -14,9 +14,6 @@ public class UserTest {
     void objectCreation() {
         user = new User("testUser", "testPassword", "test@test.com");
 
-        // Setting known skills
-        user.setKnownSkill("music");
-
         // Setting desired skills
         user.setDesiredSkill("guitar");
     }
@@ -33,11 +30,6 @@ public class UserTest {
 
     @Test
     void testEmail() { assertEquals("test@test.com", user.getEmail());
-    }
-
-    @Test
-    void testKnownSkillsValues() {
-        assertEquals("music", user.getKnownSkill());
     }
 
     @Test
