@@ -19,12 +19,12 @@ public class User {
 
     public String getEmail() { return this.email;}
 
-    public void setKnownSkills(String knownSkill) {
-        knownSkill = knownSkill;
+    public void setKnownSkill(String knownSkill) {
+        this.knownSkill = knownSkill;
     }
 
-    public void setDesiredSkills(String desiredSkill) {
-        desiredSkill = desiredSkill;
+    public void setDesiredSkill(String desiredSkill) {
+        this.desiredSkill = desiredSkill;
     }
 
     public String getKnownSkill() {
