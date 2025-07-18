@@ -12,10 +12,9 @@ public class UserTest {
 
     @BeforeEach
     void objectCreation() {
-        user = new User("testUser", "testPassword", "test@test.com");
+        user = new User("testUser", "testPassword", "test@test.com", "guitar");
 
         // Setting desired skills
-        user.setDesiredSkill("guitar");
     }
 
     @Test
