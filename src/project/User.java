@@ -6,10 +6,11 @@ public class User {
     private String email;
     private String desiredSkill;
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String email, String desiredSkill) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.desiredSkill = desiredSkill;
     }
 
     public String getUsername() { return this.username;}
@@ -18,9 +19,6 @@ public class User {
 
     public String getEmail() { return this.email;}
 
-    public void setDesiredSkill(String desiredSkill) {
-        this.desiredSkill = desiredSkill;
-    }
 
     public String getDesiredSkill() {
         return desiredSkill;
