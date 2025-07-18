@@ -48,37 +48,10 @@ public class Database {
                 "User_ID SERIAL PRIMARY KEY, " +
                 "Username varchar(50) NOT NULL UNIQUE, " +
                 "Password varchar(15) NOT NULL, " +
-                "Email varchar(50) NOT NULL);";
+                "Email varchar(50) NOT NULL, " +
+                "Desired_Skill varchar(50) NOT NULL);";
 
         tableCreation(sql);
     }
 
-    public void createDesiredSkillsTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS desired_skills (" +
-                "User_ID INT, " +
-                "Skill_ID INT, " +
-                "PRIMARY KEY (User_ID, Skill_ID), " +
-                "FOREIGN KEY (User_ID) REFERENCES users(User_ID), " +
-                "FOREIGN KEY (Skill_ID) REFERENCES skills(Skill_ID));";
-
-        tableCreation(sql);
-    }
-
-    public void addUser(User user) {
-        String sql = "INSERT INTO users (Username, Password, Email) VALUES (?, ?, ?);";
-
-        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-             PreparedStatement prepared = con.prepareStatement(sql)) {
-
-            prepared.setString(1, user.getUsername());
-            prepared.setString(2, user.getPassword());
-            prepared.setString(3, user.getEmail());
-            prepared.execute();
-            System.out.println("User added successfully");
-
-        } catch (SQLException e) {
-            System.out.println("There was an error when adding this user");
-            e.printStackTrace();
-        }
-    }
 }
