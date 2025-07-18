@@ -28,14 +28,7 @@ public class Database {
         this.dbPassword = prop.getProperty("db.password");
     }
 
-    public void createTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS users (" +
-                "Username varchar(50) PRIMARY KEY, " +
-                "Password varchar(15) NOT NULL, " +
-                "Email varchar(50) NOT NULL" +
-                "knownSkill varchar(50)" +
-                "desiredSkill varchar(50);";
-
+    public void tableCreation(String sql) {
         // Establishing a connection with database
         try {
             Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
@@ -48,6 +41,15 @@ public class Database {
             System.out.println("There was a problem creating the database table");
             e.printStackTrace();
         }
+    }
+
+    public void createTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS users (" +
+                "Username varchar(50) PRIMARY KEY, " +
+                "Password varchar(15) NOT NULL, " +
+                "Email varchar(50) NOT NULL);";
+
+        tableCreation(sql);
     }
 
     public void addUser(User user) {
