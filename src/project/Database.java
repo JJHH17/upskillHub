@@ -146,4 +146,20 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+    public void addKnownSkill(String skillName) {
+        String sql = "INSERT INTO knownSkills (skillName) VALUES (?) ON CONFLICT (skillName) DO NOTHING;";
+
+        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+             PreparedStatement prepared = con.prepareStatement(sql)) {
+
+            prepared.setString(1, skillName);
+            prepared.execute();
+            System.out.println("Skill added successfully");
+
+        } catch (SQLException e) {
+            System.out.println("There was an error when adding this skill");
+            e.printStackTrace();
+        }
+    }
 }
