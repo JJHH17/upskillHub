@@ -53,32 +53,13 @@ public class Database {
         tableCreation(sql);
     }
 
-    public void createSkillsTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS skills (" +
-                "Skill_ID SERIAL PRIMARY KEY, " +
-                "Skill_Name varchar(50) NOT NULL UNIQUE);";
-
-        tableCreation(sql);
-    }
-
-    public void createUserSkillsTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS user_skills (" +
-                "User_ID INT, " +
-                "Skill_ID INT, " +
-                "PRIMARY KEY (User_ID, Skill_ID)," +
-                "FOREIGN KEY (User_ID) REFERENCES users(User_ID)," +
-                "FOREIGN KEY (Skill_ID) REFERENCES skills(Skill_ID));";
-
-        tableCreation(sql);
-    }
-
     public void createDesiredSkillsTable() {
         String sql = "CREATE TABLE IF NOT EXISTS desired_skills (" +
                 "User_ID INT, " +
-                "Skills_ID INT, " +
+                "Skill_ID INT, " +
                 "PRIMARY KEY (User_ID, Skill_ID), " +
                 "FOREIGN KEY (User_ID) REFERENCES users(User_ID), " +
-                "FOREIGN KEY (Skills_ID) REFERENCES skills(Skill_ID));";
+                "FOREIGN KEY (Skill_ID) REFERENCES skills(Skill_ID));";
 
         tableCreation(sql);
     }
@@ -97,61 +78,6 @@ public class Database {
 
         } catch (SQLException e) {
             System.out.println("There was an error when adding this user");
-            e.printStackTrace();
-        }
-    }
-
-    public void addSkill(String skillName) {
-        String sql = "INSERT INTO skills (Skill_Name) VALUES (?);";
-
-        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-             PreparedStatement prepared = con.prepareStatement(sql)) {
-
-            prepared.setString(1, skillName);
-            prepared.execute();
-            System.out.println("Skill added successfully");
-
-        } catch (SQLException e) {
-            System.out.println("There was an error when adding this skill");
-            e.printStackTrace();
-        }
-    }
-
-    public void mapKnownSkillToUser(String username, String skillName) {
-        String sql = "INSERT INTO user_skills (User_ID, Skill_ID) " +
-                "SELECT u.User_ID, s,Skill_ID " +
-                "FROM users u, skills s " +
-                "WHERE u.Username = ? AND s.Skill_Name = ?;";
-
-        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-             PreparedStatement prepared = con.prepareStatement(sql)) {
-
-            prepared.setString(1, username);
-            prepared.setString(2, skillName);
-            prepared.execute();
-            System.out.println("Skill mapped successfully");
-
-        } catch (SQLException e) {
-            System.out.println("There was an error when mapping this skill to the user");
-            e.printStackTrace();
-        }
-    }
-    public void mapDesiredSkillToUser(String username, String skillName) {
-        String sql = "INSERT INTO desired_skills (User_ID, Skill_ID) " +
-                "SELECT u.User_ID, s.Skill_ID " +
-                "FROM users u, skills s " +
-                "WHERE u.Username = ? AND s.Skill_Name = ?;";
-
-        try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-             PreparedStatement prepared = con.prepareStatement(sql)) {
-
-            prepared.setString(1, username);
-            prepared.setString(2, skillName);
-            prepared.execute();
-            System.out.println("Skill mapped successfully");
-
-        } catch (SQLException e) {
-            System.out.println("There was an error when mapping this skill to the user");
             e.printStackTrace();
         }
     }
