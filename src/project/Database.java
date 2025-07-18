@@ -3,7 +3,7 @@ package project;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class Database {
@@ -147,13 +147,16 @@ public class Database {
         }
     }
 
-    public void addKnownSkill(String skillName) {
-        String sql = "INSERT INTO knownSkills (skillName) VALUES (?) ON CONFLICT (skillName) DO NOTHING;";
+    public void addKnownSkill(ArrayList<String> skillName) {
+        String sql = "INSERT INTO knownSkills (skillName) VALUES (?, ?, ?) ON CONFLICT (skillName) DO NOTHING;";
 
         try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
              PreparedStatement prepared = con.prepareStatement(sql)) {
 
-            prepared.setString(1, skillName);
+            prepared.setString(1, skillName.get(0));
+            prepared.setString(2, skillName.get(1));
+            prepared.setString(3, skillName.get(2));
+
             prepared.execute();
             System.out.println("Skill added successfully");
 
