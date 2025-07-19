@@ -7,4 +7,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class API {
+    public API() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+
+
+    }
 }
