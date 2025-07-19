@@ -72,20 +72,20 @@ public class Database {
         }
     }
 
-    public void fetchTask(User user) {
+    public void fetchTask(String username) {
         String sql = "SELECT Desired_Skill FROM users WHERE Username = ?";
 
         try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
              PreparedStatement prepared = con.prepareStatement(sql)) {
 
-            prepared.setString(1, user.getUsername());
+            prepared.setString(1, username);
             ResultSet result = prepared.executeQuery();
 
             if (result.next()) {
                 String skill = result.getString("Desired_Skill");
                 System.out.println("Desired skill: " + skill);
             } else {
-                System.out.println("No user found with username: " + user.getUsername());
+                System.out.println("No user found with username: " + username);
             }
 
         } catch (SQLException e) {
