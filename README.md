@@ -1,6 +1,6 @@
 # upskillHub
-UpskillHub is a learning platform that allows users to connect based on their profiency in subjects, as well as 
-what they wish to learn.
+Upskill is a platform that allows users to enter the skill they wish to learn, and courses are
+fed back based on that input.
 
 Users populate a presented field, enter credentials and fill out the relevant learning fields.
 
