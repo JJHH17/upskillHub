@@ -72,20 +72,21 @@ public class Database {
         }
     }
 
-    public void fetchTask(String username) {
-        String sql = "SELECT Desired_Skill FROM users WHERE Username = ?";
+    public void fetchTask(String username, String password) {
+        String sql = "SELECT Desired_Skill FROM users WHERE Username = ? AND Password = ?";
 
         try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
              PreparedStatement prepared = con.prepareStatement(sql)) {
 
             prepared.setString(1, username);
+            prepared.setString(2, password);
             ResultSet result = prepared.executeQuery();
 
             if (result.next()) {
                 String skill = result.getString("Desired_Skill");
                 System.out.println("Desired skill: " + skill);
             } else {
-                System.out.println("No user found with username: " + username);
+                System.out.println("Account not found, please try again");
             }
 
         } catch (SQLException e) {
