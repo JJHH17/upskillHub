@@ -72,14 +72,14 @@ public class Database {
         }
     }
 
-    public void fetchTask(String username, String password) {
+    public void fetchTask(User username, User password) {
         String sql = "SELECT Desired_Skill FROM users WHERE Username = ? AND Password = ?";
 
         try (Connection con = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
              PreparedStatement prepared = con.prepareStatement(sql)) {
 
-            prepared.setString(1, username);
-            prepared.setString(2, password);
+            prepared.setString(1, username.getUsername());
+            prepared.setString(2, username.getPassword());
             ResultSet result = prepared.executeQuery();
 
             if (result.next()) {
