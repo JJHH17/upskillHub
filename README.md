@@ -16,3 +16,7 @@ skills they wish to learn.
 
 ```Installation Steps```
 - You will find JUNIT installed under the "lib" directory of the project.
+- 
+- You will also find JavaFX installed under "lib", which can be installed via: https://openjfx.io/
+1. Install JavaFX (SDK version 24.0.2)
+2. Extract the Zip and add it to the lib directory
