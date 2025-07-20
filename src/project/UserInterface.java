@@ -13,7 +13,8 @@ public class UserInterface {
     }
 
     public void start() {
-        while (true) {
+        boolean active = true;
+        while (active) {
             System.out.println("Welcome to UpskillHub!");
             System.out.println("'Login' to Login, or 'create' to create an account? 'quit' to quit");
             String loginOrCreate = scanner.nextLine().toLowerCase();
@@ -42,10 +43,12 @@ public class UserInterface {
 
                 case "quit":
                     System.out.println("Goodbye!");
+                    active = false;
                     break;
 
                 default:
                     System.out.println("Invalid input");
+                    break;
             }
         }
     }
